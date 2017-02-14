@@ -1,0 +1,14 @@
+[application]
+port = "8080"
+
+[database]
+host = "172.17.0.2"
+port = "5432"
+user = "postgres"
+password = "postgres"
+dbname = "task_list"
+
+[cache]
+host = "172.17.0.4"
+port = "6379"
+secret = "task-list-a0bbe"

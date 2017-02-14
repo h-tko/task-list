@@ -1,0 +1,140 @@
+{
+    "memo": "0f85b6bf3b189e553f3da89b96d45375db91c0f843feb71411e46065b627fb10",
+    "projects": [
+        {
+            "name": "github.com/dgrijalva/jwt-go",
+            "version": "v3.0.0",
+            "revision": "d2709f9f1f31ebcda9651b03077758c1f3a0018c",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/jinzhu/gorm",
+            "version": "v1.0",
+            "revision": "5174cc5c242a728b435ea2be8a2f7f998e15429b",
+            "packages": [
+                ".",
+                "dialects/postgres"
+            ]
+        },
+        {
+            "name": "github.com/jinzhu/inflection",
+            "branch": "master",
+            "revision": "1c35d901db3da928c72a72d8458480cc9ade058f",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/labstack/echo",
+            "version": "v3.0.3",
+            "revision": "8d504c1b699c757b267255c53b3e5219f9974abc",
+            "packages": [
+                ".",
+                "middleware"
+            ]
+        },
+        {
+            "name": "github.com/labstack/gommon",
+            "version": "v0.1.0",
+            "revision": "2d272df536d051e737aea353b86c979d6e88bce0",
+            "packages": [
+                "bytes",
+                "color",
+                "log",
+                "random"
+            ]
+        },
+        {
+            "name": "github.com/lib/pq",
+            "branch": "master",
+            "revision": "0477eb88c5ca4009cb281f13c90633375b6a9987",
+            "packages": [
+                ".",
+                "hstore"
+            ]
+        },
+        {
+            "name": "github.com/mattn/go-colorable",
+            "version": "v0.0.6",
+            "revision": "ed8eb9e318d7a84ce5915b495b7d35e0cfe7b5a8",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/mattn/go-isatty",
+            "branch": "master",
+            "revision": "30a891c33c7cde7b02a981314b4228ec99380cca",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/pelletier/go-buffruneio",
+            "branch": "master",
+            "revision": "df1e16fde7fc330a0ca68167c23bf7ed6ac31d6d",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/pelletier/go-toml",
+            "version": "v0.4.0",
+            "revision": "d464759235b8fd59f8ab4c44807d7c36e1678add",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/tylerb/graceful",
+            "version": "v1.2.15",
+            "revision": "4654dfbb6ad53cb5e27f37d99b02e16c1872fbbb",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/valyala/bytebufferpool",
+            "branch": "master",
+            "revision": "e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/valyala/fasttemplate",
+            "branch": "master",
+            "revision": "d090d65668a286d9a180d43a19dfdc5dcad8fe88",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "golang.org/x/crypto",
+            "branch": "master",
+            "revision": "22ddb68eccda408bbf17759ac18d3120ce0d4f3f",
+            "packages": [
+                "acme/autocert"
+            ]
+        },
+        {
+            "name": "golang.org/x/net",
+            "branch": "release-branch.go1.6",
+            "revision": "62685c2d7ca23c807425dca88b11a3e2323dab41",
+            "packages": [
+                "context",
+                "context/ctxhttp"
+            ]
+        },
+        {
+            "name": "golang.org/x/sys",
+            "branch": "master",
+            "revision": "7a6e5648d140666db5d920909e082ca00a87ba2c",
+            "packages": [
+                "unix"
+            ]
+        }
+    ]
+}

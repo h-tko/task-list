@@ -1,0 +1,27 @@
+.mt-20 {
+    margin-top: 20px;
+}
+
+.navbar-collapse {
+    padding-top: .50rem;
+    padding-bottom: .50rem;
+}
+
+.slider-move {
+    transition: opacity .5s;
+    font:35px bold;
+    color:#000;
+    padding:25px;
+    -webkit-transition: 1s ease-in-out;
+    text-indent:-999px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0
+}
