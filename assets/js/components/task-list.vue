@@ -29,6 +29,7 @@ export default {
         return {
             tasks: null,
             error: null,
+            freeword_bef: null,
             freeword: null,
             show: true,
         }
@@ -49,6 +50,13 @@ export default {
             return "/detail/" + id
         },
         search() {
+
+            if (this.freeword_bef === this.freeword) {
+                return
+            }
+
+            this.freeword_bef = this.freeword
+
             $.post("/search", {freeword: this.freeword}, (result) => {
                 if (result.err) {
                     console.log(result.err)
