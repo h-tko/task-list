@@ -16,6 +16,10 @@
                             <router-link class="nav-link" to="/send">要望登録</router-link>
                         </li>
                     </div>
+
+                    <div class="navbar-nav float-md-right login-disabled">
+                        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#login-modal">ログイン</button>
+                    </div>
                 </div>
             </nav>
 
@@ -23,6 +27,7 @@
                 <div class="container">
                     <router-view></router-view>
                 </div>
+                <router-view name="login"></router-view>
             </main>
         </div>
         <script type="text/javascript" src="/static/dist/bundle.js"></script>

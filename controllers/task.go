@@ -43,7 +43,11 @@ func (this *TaskController) Detail(c echo.Context) error {
 	taskModel := models.NewTask()
 	taskModel.One(taskID)
 
+	taskCommentModel := models.NewTaskComment()
+	taskComments := taskCommentModel.ListByTaskID(taskID)
+
 	this.SetResponse("Task", taskModel)
+	this.SetResponse("TaskComments", taskComments)
 
 	return this.JSON(c, http.StatusOK)
 }

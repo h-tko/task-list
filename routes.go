@@ -11,4 +11,5 @@ func routes(e *echo.Echo) {
 	e.POST("/search/", new(TaskListController).Search)
 	e.POST("/regist_task/", new(TaskController).Regist)
 	e.GET("/detail/:id/", new(TaskController).Detail)
+	e.POST("/login/", new(LoginController).Login)
 }

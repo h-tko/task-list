@@ -6,11 +6,11 @@
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" v-model="freeword">
             </div>
             <div class="col">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button" v-on:click="search()">Search</button>
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="button" v-on:click="search()">Search</button>
             </div>
         </div>
 
-        <transition-group class="list-group mt-20" name="slider" tag="ul" appear>
+        <transition-group class="list-group mt-20" name="slider" tag="ul" model="out-in" appear>
             <div v-for="task in tasks" v-bind:key="task">
                 <router-link :to="url(task.ID)" exact>
                     <li class="list-group-item justify-content-between">

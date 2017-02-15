@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/echo-contrib/sessions"
 	"github.com/h-tko/task-list/models"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -33,6 +34,18 @@ func main() {
 		e.Logger.Fatal(err)
 		return
 	}
+
+	cacheHost := config.Get("cache.host").(string)
+	cachePort := config.Get("cache.port").(string)
+	cacheSecret := config.Get("cache.secret").(string)
+
+	store, err := sessions.NewRedisStore(16, "tcp", fmt.Sprintf("%s:%s", cacheHost, cachePort), "", []byte(cacheSecret))
+
+	if err != nil {
+		panic(err)
+	}
+
+	e.Use(sessions.Sessions("echosession", store))
 
 	e.Pre(middleware.AddTrailingSlash())
 

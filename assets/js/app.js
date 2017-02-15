@@ -6,19 +6,29 @@ import 'filters';
 import TaskList from './components/task-list';
 import SendTask from './components/send-task';
 import TaskDetail from './components/task-detail';
+import LoginModal from './components/login';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
 const routes = [{
     path: '/tasks',
-    component: TaskList,
+    components: {
+        default: TaskList,
+        login: LoginModal,
+    }
 }, {
     path: '/send',
-    component: SendTask,
+    components: {
+        default: SendTask,
+        login: LoginModal,
+    }
 }, {
     path: '/detail/:id',
-    component: TaskDetail,
+    components: {
+        default: TaskDetail,
+        login: LoginModal,
+    }
 }];
 
 const router = new VueRouter({

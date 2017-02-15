@@ -9,6 +9,6 @@ password = "postgres"
 dbname = "task_list"
 
 [cache]
-host = "172.17.0.4"
+host = "172.17.0.3"
 port = "6379"
 secret = "task-list-a0bbe"

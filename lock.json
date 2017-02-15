@@ -1,6 +1,14 @@
 {
-    "memo": "0f85b6bf3b189e553f3da89b96d45375db91c0f843feb71411e46065b627fb10",
+    "memo": "af37efc3e2c96cb418737f92f41544d9a9e5529b94398e2d02bba3c862f4a77c",
     "projects": [
+        {
+            "name": "github.com/boj/redistore",
+            "version": "v1.2",
+            "revision": "71d1a4a1b63fdbb8d5eac2602481fc713a87a451",
+            "packages": [
+                "."
+            ]
+        },
         {
             "name": "github.com/dgrijalva/jwt-go",
             "version": "v3.0.0",
@@ -10,9 +18,57 @@
             ]
         },
         {
+            "name": "github.com/echo-contrib/sessions",
+            "branch": "master",
+            "revision": "f82e75a410a7aa3e0f55d03a3311383bdceddd6e",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/garyburd/redigo",
+            "version": "v1.0.0",
+            "revision": "8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13",
+            "packages": [
+                "redis"
+            ]
+        },
+        {
+            "name": "github.com/gorilla/context",
+            "version": "v1.1",
+            "revision": "a85d2e53ba63bdea074dbbbb5983f0516974e87b",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/gorilla/securecookie",
+            "version": "v1.1",
+            "revision": "667fe4e3466a040b780561fe9b51a83a3753eefc",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/gorilla/sessions",
+            "version": "v1.1",
+            "revision": "ca9ada44574153444b00d3fd9c8559e4cc95f896",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/h-tko/blog",
+            "branch": "master",
+            "revision": "e7d859205f10fc6fd7f4c9f11964253ed4cf4d00",
+            "packages": [
+                "libraries"
+            ]
+        },
+        {
             "name": "github.com/jinzhu/gorm",
             "version": "v1.0",
-            "revision": "5174cc5c242a728b435ea2be8a2f7f998e15429b",
+            "revision": "316ca8e6a8decf0177eebc8db5443571fce5e944",
             "packages": [
                 ".",
                 "dialects/postgres"
@@ -28,8 +84,8 @@
         },
         {
             "name": "github.com/labstack/echo",
-            "version": "v3.0.3",
-            "revision": "8d504c1b699c757b267255c53b3e5219f9974abc",
+            "branch": "master",
+            "revision": "394f533510cc577dd4e136b56de3802a4f88f7b4",
             "packages": [
                 ".",
                 "middleware"
@@ -49,7 +105,7 @@
         {
             "name": "github.com/lib/pq",
             "branch": "master",
-            "revision": "0477eb88c5ca4009cb281f13c90633375b6a9987",
+            "revision": "ba5d4f7a35561e22fbdf7a39aa0070f4d460cfc0",
             "packages": [
                 ".",
                 "hstore"
@@ -57,16 +113,16 @@
         },
         {
             "name": "github.com/mattn/go-colorable",
-            "version": "v0.0.6",
-            "revision": "ed8eb9e318d7a84ce5915b495b7d35e0cfe7b5a8",
+            "version": "v0.0.7",
+            "revision": "d228849504861217f796da67fae4f6e347643f15",
             "packages": [
                 "."
             ]
         },
         {
             "name": "github.com/mattn/go-isatty",
-            "branch": "master",
-            "revision": "30a891c33c7cde7b02a981314b4228ec99380cca",
+            "version": "v0.0.1",
+            "revision": "3a115632dcd687f9c8cd01679c83a06a0e21c1f3",
             "packages": [
                 "."
             ]
@@ -88,9 +144,17 @@
             ]
         },
         {
-            "name": "github.com/tylerb/graceful",
-            "version": "v1.2.15",
-            "revision": "4654dfbb6ad53cb5e27f37d99b02e16c1872fbbb",
+            "name": "github.com/russross/blackfriday",
+            "branch": "master",
+            "revision": "5f33e7b7878355cd2b7e6b8eefc48a5472c69f70",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/shurcooL/sanitized_anchor_name",
+            "branch": "master",
+            "revision": "1dba4b3954bc059efc3991ec364f9f9a35f597d2",
             "packages": [
                 "."
             ]
@@ -114,15 +178,15 @@
         {
             "name": "golang.org/x/crypto",
             "branch": "master",
-            "revision": "22ddb68eccda408bbf17759ac18d3120ce0d4f3f",
+            "revision": "453249f01cfeb54c3d549ddb75ff152ca243f9d8",
             "packages": [
                 "acme/autocert"
             ]
         },
         {
             "name": "golang.org/x/net",
-            "branch": "release-branch.go1.6",
-            "revision": "62685c2d7ca23c807425dca88b11a3e2323dab41",
+            "branch": "master",
+            "revision": "61557ac0112b576429a0df080e1c2cef5dfbb642",
             "packages": [
                 "context",
                 "context/ctxhttp"
@@ -131,7 +195,7 @@
         {
             "name": "golang.org/x/sys",
             "branch": "master",
-            "revision": "7a6e5648d140666db5d920909e082ca00a87ba2c",
+            "revision": "e24f485414aeafb646f6fca458b0bf869c0880a1",
             "packages": [
                 "unix"
             ]
