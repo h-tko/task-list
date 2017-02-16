@@ -8,18 +8,20 @@
             <div>
                 <div class="row">
                     <div class="col">
-                        <div class="card card-outline-primary mt-20">
+                        <div class="card card-outline-primary mt-4">
                             <div class="card-header card-primary">{{task.Title}}</div>
                             <div class="card-block">
                                 <p class="card-text" v-html="nl2br(task.Body)"></p>
                             </div>
                         </div>
 
-                        <div class="col-sm-8 float-sm-right mt-20" v-for="comment in taskComments" v-bind:key="comment" v-if="taskComments">
-                            <div class="card card-outline-success mt-3">
-                                <div class="card-block" v-html="nl2br(comment.Comment)"></div>
+                        <transition-group name="custom-classes-transition" enter-active-class="animated lightSpeedIn">
+                            <div class="col-sm-8 float-sm-right mt-20" v-for="comment in taskComments" v-bind:key="comment" v-if="taskComments">
+                                <div class="card card-outline-success mt-2">
+                                    <div class="card-block" v-html="nl2br(comment.Comment)"></div>
+                                </div>
                             </div>
-                        </div>
+                        </transition-group>
                     </div>
                 </div>
 

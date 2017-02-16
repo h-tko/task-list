@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <transition-group class="list-group mt-20" name="slider" tag="ul" model="out-in" appear>
+        <transition-group class="list-group mt-20" name="custom-classes-transition" enter-active-class="animated fadeInUp" tag="ul" mode="out-in">
             <div v-for="task in tasks" v-bind:key="task">
                 <router-link :to="url(task.ID)" exact>
                     <li class="list-group-item justify-content-between">

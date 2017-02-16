@@ -1,5 +1,6 @@
 require('bootstrap/dist/css/bootstrap.min');
 require('bootstrap/dist/js/bootstrap.min');
+require('animate.css/animate.min.css');
 require('../css/app');
 
 import 'filters';
