@@ -31,3 +31,8 @@ func (model *TaskComment) ListByTaskID(taskID int) []*TaskComment {
 
 	return taskComments
 }
+
+func (model *TaskComment) Regist() {
+	db.NewRecord(model)
+	db.Create(&model)
+}

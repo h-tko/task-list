@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"github.com/echo-contrib/sessions"
 	"github.com/labstack/echo"
 )
 
@@ -15,6 +16,12 @@ type BaseController struct {
 }
 
 func (this *BaseController) BeforeFilter(c echo.Context) {
+	session := sessions.Default(c)
+	memberID := session.Get("MemberID")
+
+	if memberID != nil {
+		this.SetResponse("MemberID", memberID)
+	}
 }
 
 func (this *BaseController) SetResponse(key string, val interface{}) {
@@ -31,11 +38,7 @@ func (this *BaseController) Render(c echo.Context, status int, oFile string) err
 		this.response = make(map[string]interface{})
 	}
 
-	this.response["mt"] = this.MetaTitle
-	this.response["md"] = this.MetaDescription
-	this.response["mk"] = this.MetaKeywords
-	this.response["mh1"] = this.MetaH1
-	this.response["mr"] = this.MetaRobots
+	this.setMeta()
 
 	return c.Render(status, oFile, this.response)
 }
@@ -45,11 +48,15 @@ func (this *BaseController) JSON(c echo.Context, status int) error {
 		this.response = make(map[string]interface{})
 	}
 
+	this.setMeta()
+
+	return c.JSON(status, this.response)
+}
+
+func (this *BaseController) setMeta() {
 	this.response["mt"] = this.MetaTitle
 	this.response["md"] = this.MetaDescription
 	this.response["mk"] = this.MetaKeywords
 	this.response["mh1"] = this.MetaH1
 	this.response["mr"] = this.MetaRobots
-
-	return c.JSON(status, this.response)
 }

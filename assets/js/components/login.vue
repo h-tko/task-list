@@ -42,7 +42,7 @@ export default {
         return {
             mail_address: null,
             password: null,
-            member: null,
+            memberID: null,
         }
     },
     methods: {
@@ -51,14 +51,14 @@ export default {
                 if (result.err) {
                     alert(result.err)
                 } else {
-                    this.member = result.Member
+                    this.memberID = result.MemberID
                 }
             })
         }
     },
     watch: {
-        member: (newMember) => {
-            window.Member = newMember
+        memberID: (newMemberID) => {
+            window.MemberID = newMemberID
 
             const objects = document.querySelectorAll(".login-disabled")
 

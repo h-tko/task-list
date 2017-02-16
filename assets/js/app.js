@@ -12,6 +12,12 @@ Vue.use(VueResource);
 Vue.use(VueRouter);
 
 const routes = [{
+    path: '/',
+    components: {
+        default: TaskList,
+        login: LoginModal,
+    }
+}, {
     path: '/tasks',
     components: {
         default: TaskList,

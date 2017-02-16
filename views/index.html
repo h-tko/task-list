@@ -17,9 +17,11 @@
                         </li>
                     </div>
 
+{{if not .MemberID}}
                     <div class="navbar-nav float-md-right login-disabled">
                         <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#login-modal">ログイン</button>
                     </div>
+{{end}}
                 </div>
             </nav>
 
