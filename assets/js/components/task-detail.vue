@@ -12,10 +12,14 @@
                             <div class="card-header card-primary">{{task.Title}}</div>
                             <div class="card-block">
                                 <p class="card-text" v-html="nl2br(task.Body)"></p>
+
+                                <div class="float-sm-right">
+                                    <p><small><strong>要望者:&nbsp;</strong>{{task.RegistMember.Name}}</small></p>
+                                </div>
                             </div>
                         </div>
 
-                        <transition-group name="custom-classes-transition" enter-active-class="animated lightSpeedIn">
+                        <transition-group name="custom-classes-transition" enter-active-class="animated slideInLeft" appear>
                             <div class="col-sm-8 float-sm-right mt-20" v-for="comment in taskComments" v-bind:key="comment" v-if="taskComments">
                                 <div class="card card-outline-success mt-2">
                                     <div class="card-block" v-html="nl2br(comment.Comment)"></div>
