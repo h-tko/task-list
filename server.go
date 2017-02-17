@@ -7,12 +7,21 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/pelletier/go-toml"
+	"gopkg.in/go-playground/validator.v9"
 	"html/template"
 	"io"
 )
 
 type Template struct {
 	templates *template.Template
+}
+
+type CustomValidator struct {
+	validator *validator.Validate
+}
+
+func (cv *CustomValidator) Validate(i interface{}) error {
+	return cv.validator.Struct(i)
 }
 
 func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
@@ -24,6 +33,7 @@ func main() {
 	defer models.CloseDatabase()
 
 	e := echo.New()
+	e.Validator = &CustomValidator{validator: validator.New()}
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())

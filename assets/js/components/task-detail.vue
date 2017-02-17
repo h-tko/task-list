@@ -20,9 +20,12 @@
                         </div>
 
                         <transition-group name="custom-classes-transition" enter-active-class="animated slideInLeft" appear>
-                            <div class="col-sm-8 float-sm-right mt-20" v-for="comment in taskComments" v-bind:key="comment" v-if="taskComments">
-                                <div class="card card-outline-success mt-2">
-                                    <div class="card-block" v-html="nl2br(comment.Comment)"></div>
+                            <div class="col-sm-8 float-sm-right mt-2" v-for="comment in taskComments" v-bind:key="comment" v-if="taskComments">
+                                <div class="card card-outline-info">
+                                    <div class="card-block">
+                                        <p v-html="nl2br(comment.Comment)"></p>
+                                        <div class="float-sm-right text-muted"><small>{{comment.Member.Name}}が{{datetimeFormat(comment.CreatedAt)}}に投稿しました</small></div>
+                                    </div>
                                 </div>
                             </div>
                         </transition-group>
@@ -34,6 +37,9 @@
                         <div class="card">
                             <div class="card-block">
                                 <textarea class="form-control" v-model="comment" rows="6" placeholder="コメントを書く"></textarea>
+                                <div v-if="err" v-for="errObj in err" v-bind:key="errObj">
+                                    <span class="text-error" v-if="invalidComment(errObj)">{{getErrorMessageInComment(errObj)}}</span>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="row">
@@ -61,6 +67,8 @@ export default {
             show: false,
             comment: null,
             memberID: null,
+            member: null,
+            err: null,
         }
     },
     beforeRouteEnter(route, redirect, next) {
@@ -73,6 +81,7 @@ export default {
                     vm.taskComments = result.TaskComments
                     vm.show = true
                     vm.memberID = result.MemberID
+                    vm.member = result.Member
                 })
             }
         })
@@ -81,25 +90,40 @@ export default {
         nl2br(value) {
             return this.$options.filters.nl2br(value)
         },
+        datetimeFormat(value) {
+            return this.$options.filters.datetime_format(value)
+        },
         logined() {
             return this.memberID !== null
+        },
+        invalidComment(err) {
+            return err && err.Field === "Comment"
+        },
+        getErrorMessageInComment(err) {
+            if (err.Kind === "required") {
+                return "コメントを入力してください。"
+            }
         },
         clearComment() {
             this.comment = null
         },
         sendComment() {
-            var comment = {
-                Comment: this.comment
-            }
-            this.taskComments.push(comment)
-
             $.post('/detail/send_comment/', {
                 id: this.task.ID,
                 comment: this.comment
             }, (result) => {
-                if (!result) {
-                    connsole.log(result)
+                if (result.err) {
+                    this.err = result.err
                 } else {
+                    const comment = {
+                        Comment: this.comment,
+                        CreatedAt: new Date().toString(),
+                        Member: {
+                            Name: this.member.Name
+                        }
+                    }
+
+                    this.taskComments.push(comment)
                     this.comment = null
                 }
             })
@@ -117,6 +141,7 @@ export default {
                     this.taskComments = result.TaskComments
                     this.show = true
                     this.memberID = result.MemberID
+                    this.member = result.Member
                 }
             })
         },

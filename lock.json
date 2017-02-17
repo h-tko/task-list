@@ -1,10 +1,10 @@
 {
-    "memo": "af37efc3e2c96cb418737f92f41544d9a9e5529b94398e2d02bba3c862f4a77c",
+    "memo": "c9ea75f628bcb94732cec2452767e3903f859ccac42c9a4b752b76ecd8b3bd15",
     "projects": [
         {
             "name": "github.com/boj/redistore",
             "version": "v1.2",
-            "revision": "71d1a4a1b63fdbb8d5eac2602481fc713a87a451",
+            "revision": "fc113767cd6b051980f260d6dbe84b2740c46ab0",
             "packages": [
                 "."
             ]
@@ -34,9 +34,25 @@
             ]
         },
         {
+            "name": "github.com/go-playground/locales",
+            "version": "v0.11.1",
+            "revision": "b860c92274dfb72f517b8b4c11c6d9f2f8cc9d91",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/go-playground/universal-translator",
+            "version": "v0.16.0",
+            "revision": "b32fa301c9fe55953584134cb6853a13c87ec0a1",
+            "packages": [
+                "."
+            ]
+        },
+        {
             "name": "github.com/gorilla/context",
             "version": "v1.1",
-            "revision": "a85d2e53ba63bdea074dbbbb5983f0516974e87b",
+            "revision": "1ea25387ff6f684839d82767c1733ff4d4d15d0a",
             "packages": [
                 "."
             ]
@@ -68,7 +84,7 @@
         {
             "name": "github.com/jinzhu/gorm",
             "version": "v1.0",
-            "revision": "316ca8e6a8decf0177eebc8db5443571fce5e944",
+            "revision": "5174cc5c242a728b435ea2be8a2f7f998e15429b",
             "packages": [
                 ".",
                 "dialects/postgres"
@@ -186,7 +202,7 @@
         {
             "name": "golang.org/x/net",
             "branch": "master",
-            "revision": "61557ac0112b576429a0df080e1c2cef5dfbb642",
+            "revision": "b4690f45fa1cafc47b1c280c2e75116efe40cc13",
             "packages": [
                 "context",
                 "context/ctxhttp"
@@ -195,9 +211,17 @@
         {
             "name": "golang.org/x/sys",
             "branch": "master",
-            "revision": "e24f485414aeafb646f6fca458b0bf869c0880a1",
+            "revision": "075e574b89e4c2d22f2286a7e2b919519c6f3547",
             "packages": [
                 "unix"
+            ]
+        },
+        {
+            "name": "gopkg.in/go-playground/validator.v9",
+            "version": "v9.3.4",
+            "revision": "b250b44763b89fd6b448f2114bb7fc225c7b3008",
+            "packages": [
+                "."
             ]
         }
     ]

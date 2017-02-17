@@ -12,9 +12,11 @@
                         <li class="nav-item active">
                             <router-link class="nav-link" to="/tasks" exact>要望一覧<span class="sr-only">(current)</span></router-link>
                         </li>
+{{if .MemberID}}
                         <li class="nav-item">
                             <router-link class="nav-link" to="/send">要望登録</router-link>
                         </li>
+{{end}}
                     </div>
 
 {{if not .MemberID}}

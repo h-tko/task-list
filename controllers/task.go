@@ -47,8 +47,12 @@ func (this *TaskController) Detail(c echo.Context) error {
 	taskCommentModel := models.NewTaskComment()
 	taskComments := taskCommentModel.ListByTaskID(taskID)
 
+	memberModel := models.NewMember()
+	memberModel.FromID(this.response["MemberID"].(uint))
+
 	this.SetResponse("Task", taskModel)
 	this.SetResponse("TaskComments", taskComments)
+	this.SetResponse("Member", memberModel)
 
 	return this.JSON(c, http.StatusOK)
 }
@@ -72,6 +76,23 @@ func (this *TaskController) SendComment(c echo.Context) error {
 	taskComment.TaskID = uint(id)
 	taskComment.Comment = comment
 	taskComment.MemberID = memberID
+
+	if err := c.Bind(taskComment); err != nil {
+		fmt.Printf("%v\n", err)
+
+		return err
+	}
+
+	if errs := c.Validate(taskComment); errs != nil {
+
+		resErrors := ValidationErrors(errs)
+
+		fmt.Printf("%v", resErrors)
+
+		this.SetResponse("err", resErrors)
+
+		return this.JSON(c, http.StatusOK)
+	}
 
 	taskComment.Regist()
 

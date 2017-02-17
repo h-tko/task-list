@@ -8,7 +8,7 @@ type TaskComment struct {
 	gorm.Model
 	TaskID   uint
 	MemberID uint
-	Comment  string
+	Comment  string `validate:"required"`
 	Member   Member `gorm:members;AssociationForeignKey:ID;ForeignKey:MemberID`
 }
 

@@ -37,7 +37,7 @@ func NewTask() *Task {
 func (model *Task) All() []*Task {
 	var tasks []*Task
 
-	model.base(db).Find(&tasks)
+	model.base(db).Order("tasks.created_at desc").Find(&tasks)
 
 	for _, data := range tasks {
 		db.Model(&data).Related(&data.RegistMember, "RegistMemberID")
@@ -51,7 +51,7 @@ func (model *Task) Search(freeword string) []*Task {
 	var tasks []*Task
 	likeFreeword := "%" + freeword + "%"
 
-	model.base(db).Where("(title like ? OR body like ?)", likeFreeword, likeFreeword).Find(&tasks)
+	model.base(db).Where("(title like ? OR body like ?)", likeFreeword, likeFreeword).Order("tasks.created_at desc").Find(&tasks)
 
 	for _, data := range tasks {
 		db.Model(&data).Related(&data.RegistMember, "RegistMemberID")
@@ -65,8 +65,7 @@ func (model *Task) base(db *gorm.DB) *gorm.DB {
 	db.
 		Joins("inner join members as regist on regist.id = tasks.regist_member_id").
 		Joins("left join members as incharge on incharge.id = tasks.in_charge_member_id").
-		Where("status <> ?", Delete).
-		Order("tasks.created_at desc")
+		Where("status <> ?", Delete)
 
 	return db
 }

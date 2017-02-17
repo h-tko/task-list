@@ -25,3 +25,9 @@ func (model *Member) One(mailAddress, password string) {
 		Where("password = ?", password).
 		First(&model)
 }
+
+func (model *Member) FromID(id uint) {
+	db.Select("id, name, mail_address").
+		Where("id = ?", id).
+		First(&model)
+}
