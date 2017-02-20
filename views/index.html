@@ -8,22 +8,27 @@
                 <router-link class="navbar-brand" to="/tasks">要望管理</router-link>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                    <div class="navbar-nav mr-auto">
+                    <ul class="nav navbar-nav mr-auto" appear>
                         <li class="nav-item active">
                             <router-link class="nav-link" to="/tasks" exact>要望一覧<span class="sr-only">(current)</span></router-link>
                         </li>
-{{if .MemberID}}
-                        <li class="nav-item">
+                        <li class="nav-item login-enabled"{{if not .MemberID}} style="display: none"{{end}}>
                             <router-link class="nav-link" to="/send">要望登録</router-link>
                         </li>
-{{end}}
-                    </div>
+                    </ul>
 
-{{if not .MemberID}}
-                    <div class="navbar-nav float-md-right login-disabled">
-                        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#login-modal">ログイン</button>
-                    </div>
-{{end}}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item login-disabled"{{if .MemberID}} style="display: none"{{end}}>
+                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#login-modal">ログイン</button>
+                        </li>
+                        <li class="nav-item login-disabled"{{if .MemberID}} style="display: none"{{end}}>
+                            <router-link to="/account" class="nav-link">アカウント作成</router-link>
+                        </li>
+
+                        <li class="nav-item login-enabled"{{if not .MemberID}} style="display: none"{{end}}>
+                            <button type="button" class="btn btn-outline-danger" id="logout">ログアウト</button>
+                        </li>
+                    </ul>
                 </div>
             </nav>
 

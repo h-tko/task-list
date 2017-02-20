@@ -31,3 +31,12 @@ func (this *LoginController) Login(c echo.Context) error {
 
 	return this.JSON(c, http.StatusOK)
 }
+
+func (this *LoginController) Logout(c echo.Context) error {
+	session := sessions.Default(c)
+
+	session.Delete("MemberID")
+	session.Save()
+
+	return this.JSON(c, http.StatusOK)
+}

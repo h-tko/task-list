@@ -61,9 +61,14 @@ export default {
             window.MemberID = newMemberID
 
             const objects = document.querySelectorAll(".login-disabled")
+            const enableObjects = document.querySelectorAll(".login-enabled")
 
             objects.forEach((val) => {
                 val.style.display = 'none'
+            })
+
+            enableObjects.forEach((val) => {
+                val.style.display = 'block'
             })
 
             $('#login-modal').modal('hide')

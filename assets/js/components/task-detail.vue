@@ -1,10 +1,10 @@
 <template>
     <div class="mt-20">
         <ol class="breadcrumb" v-if="show">
-            <li class="breadcrumb-item"><router-link to="/tasks">要望一覧</li>
+            <li class="breadcrumb-item"><router-link to="/tasks">要望一覧</router-link></li>
             <li class="breadcrumb-item active">{{task.Title}}</li>
         </ol>
-        <transition name="fade" mode="out-in" tag="div" v-if="show">
+        <transition name="fade" mode="out-in" tag="div" v-if="show" appear>
             <div>
                 <div class="row">
                     <div class="col">

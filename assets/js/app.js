@@ -6,6 +6,7 @@ require('../css/app');
 import 'filters';
 import TaskList from './components/task-list';
 import SendTask from './components/send-task';
+import Account from './components/account';
 import TaskDetail from './components/task-detail';
 import LoginModal from './components/login';
 
@@ -36,6 +37,12 @@ const routes = [{
         default: TaskDetail,
         login: LoginModal,
     }
+}, {
+    path: '/account',
+    components: {
+        default: Account,
+        login: LoginModal,
+    }
 }];
 
 const router = new VueRouter({
@@ -46,3 +53,23 @@ const router = new VueRouter({
 const app = new Vue({
     router,
 }).$mount('#main');
+
+const logout = document.getElementById('logout');
+logout.addEventListener('click', () => {
+    $.get('/logout', (result) => {
+        if (result.err) {
+            console.log(err);
+        } else {
+            const disableObj = document.querySelectorAll('.login-disabled');
+            const enableObj = document.querySelectorAll('.login-enabled');
+
+            disableObj.forEach((val) => {
+                val.style.display = 'block';
+            });
+
+            enableObj.forEach((val) => {
+                val.style.display = 'none';
+            });
+        }
+    });
+});
