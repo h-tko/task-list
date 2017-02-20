@@ -83,16 +83,16 @@ func (this *TaskController) SendComment(c echo.Context) error {
 		return err
 	}
 
-	if errs := c.Validate(taskComment); errs != nil {
-
-		resErrors := ValidationErrors(errs)
-
-		fmt.Printf("%v", resErrors)
-
-		this.SetResponse("err", resErrors)
-
-		return this.JSON(c, http.StatusOK)
-	}
+	//    if errs := c.Validate(taskComment); errs != nil {
+	//
+	//        resErrors := ValidationErrors(errs)
+	//
+	//        fmt.Printf("%v", resErrors)
+	//
+	//        this.SetResponse("err", resErrors)
+	//
+	//        return this.JSON(c, http.StatusOK)
+	//    }
 
 	taskComment.Regist()
 
