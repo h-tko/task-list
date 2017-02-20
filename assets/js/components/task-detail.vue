@@ -4,8 +4,8 @@
             <li class="breadcrumb-item"><router-link to="/tasks">要望一覧</router-link></li>
             <li class="breadcrumb-item active">{{task.Title}}</li>
         </ol>
-        <transition name="fade" mode="out-in" tag="div" v-if="show" appear>
-            <div>
+        <transition name="custom-classes-transition" enter-active-class="animated fadeIn" v-on:enter="enter" mode="out-in" tag="div" appear>
+            <div v-if="show">
                 <div class="row">
                     <div class="col">
                         <div class="card card-outline-primary mt-4">
@@ -19,8 +19,8 @@
                             </div>
                         </div>
 
-                        <transition-group name="custom-classes-transition" enter-active-class="animated slideInLeft" appear>
-                            <div class="col-sm-8 float-sm-right mt-2" v-for="comment in taskComments" v-bind:key="comment" v-if="taskComments">
+                        <transition-group name="custom-classes-transition" enter-active-class="animated slideInLeft" tag="div" appear>
+                            <div class="col-sm-8 float-sm-right mt-2" v-for="comment in taskComments" v-bind:key="comment" v-if="showComment">
                                 <div class="card card-outline-info">
                                     <div class="card-block">
                                         <p v-html="nl2br(comment.Comment)"></p>
@@ -65,6 +65,7 @@ export default {
             task: null,
             taskComments: null,
             show: false,
+            showComment: false,
             comment: null,
             memberID: null,
             member: null,
@@ -80,6 +81,7 @@ export default {
                     vm.task = result.Task
                     vm.taskComments = result.TaskComments
                     vm.show = true
+                    vm.showComment = false
                     vm.memberID = result.MemberID
                     vm.member = result.Member
                 })
@@ -106,6 +108,11 @@ export default {
         },
         clearComment() {
             this.comment = null
+        },
+        enter(el) {
+            if (this.taskComments !== null) {
+                this.showComment = true
+            }
         },
         sendComment() {
             $.post('/detail/send_comment/', {
@@ -140,6 +147,7 @@ export default {
                     this.task = result.Task
                     this.taskComments = result.TaskComments
                     this.show = true
+                    this.showComment = false
                     this.memberID = result.MemberID
                     this.member = result.Member
                 }
