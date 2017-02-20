@@ -96,7 +96,7 @@ export default {
             return this.$options.filters.datetime_format(value)
         },
         logined() {
-            return this.memberID !== null
+            return this.memberID !== null && parseInt(this.memberID) > 0
         },
         invalidComment(err) {
             return err && err.Field === "Comment"

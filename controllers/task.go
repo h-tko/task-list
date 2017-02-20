@@ -47,12 +47,16 @@ func (this *TaskController) Detail(c echo.Context) error {
 	taskCommentModel := models.NewTaskComment()
 	taskComments := taskCommentModel.ListByTaskID(taskID)
 
-	memberModel := models.NewMember()
-	memberModel.FromID(this.response["MemberID"].(uint))
+	memberID := this.response["MemberID"]
+
+	if memberID != nil {
+		memberModel := models.NewMember()
+		memberModel.FromID(memberID.(uint))
+		this.SetResponse("Member", memberModel)
+	}
 
 	this.SetResponse("Task", taskModel)
 	this.SetResponse("TaskComments", taskComments)
-	this.SetResponse("Member", memberModel)
 
 	return this.JSON(c, http.StatusOK)
 }
