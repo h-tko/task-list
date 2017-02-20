@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"fmt"
+	"github.com/h-tko/task-list/models"
 	"github.com/labstack/echo"
 	"net/http"
 )
@@ -14,5 +16,26 @@ func (this *AccountController) Index(c echo.Context) error {
 }
 
 func (this *AccountController) New(c echo.Context) error {
+
+	member := models.NewMember()
+	member.Name = c.FormValue("name")
+	member.MailAddress = c.FormValue("mail_address")
+	member.Password = c.FormValue("password")
+
+	if err := c.Bind(member); err != nil {
+		fmt.Printf("%v\n", err)
+		return err
+	}
+
+	if errs := c.Validate(member); errs != nil {
+		resErrors := ValidationErrors(errs)
+		fmt.Printf("%v\n", resErrors)
+		this.SetResponse("err", resErrors)
+
+		return this.JSON(c, http.StatusOK)
+	}
+
+	member.Regist()
+
 	return this.JSON(c, http.StatusOK)
 }

@@ -33,7 +33,7 @@
                         <div class="col">
                             <div class="input-group">
                                 <span class="input-group-addon">パスワード</span>
-                                <input type="text" v-model="password">
+                                <input type="password" v-model="password">
                             </div>
                         </div>
                     </div>
@@ -65,6 +65,19 @@ export default {
     },
     methods: {
         newAccount() {
+
+            $.post('/account/new', {
+                mail_address: this.mail_address,
+                name: this.name,
+                password: this.password
+            }, (result) => {
+                if (result.err) {
+                    console.log(err)
+                } else {
+                    this.$router.push('/tasks')
+                }
+            })
+
             this.show = false
             this.$router.push('/tasks')
         },

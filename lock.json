@@ -1,5 +1,5 @@
 {
-    "memo": "c9ea75f628bcb94732cec2452767e3903f859ccac42c9a4b752b76ecd8b3bd15",
+    "memo": "ae108b110561b214e29a9bd07cb42e00d318cdb63d5036482d9fbd58d73a2013",
     "projects": [
         {
             "name": "github.com/boj/redistore",
@@ -101,7 +101,7 @@
         {
             "name": "github.com/labstack/echo",
             "branch": "master",
-            "revision": "394f533510cc577dd4e136b56de3802a4f88f7b4",
+            "revision": "70be2c2f8747c510df1f5540dc609fceb7b7b82c",
             "packages": [
                 ".",
                 "middleware"
@@ -196,13 +196,14 @@
             "branch": "master",
             "revision": "453249f01cfeb54c3d549ddb75ff152ca243f9d8",
             "packages": [
-                "acme/autocert"
+                "acme/autocert",
+                "scrypt"
             ]
         },
         {
             "name": "golang.org/x/net",
             "branch": "master",
-            "revision": "b4690f45fa1cafc47b1c280c2e75116efe40cc13",
+            "revision": "6b27048ae5e6ad1ef927e72e437531493de612fe",
             "packages": [
                 "context",
                 "context/ctxhttp"
