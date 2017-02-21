@@ -34,6 +34,17 @@ export default {
             show: true,
         }
     },
+    beforeRouteUpdate(route, redirect, next) {
+        $.get(route.path, (result) => {
+            if (result.err) {
+                console.log(result.err)
+            } else {
+                next(() => {
+                    this.tasks = result.tasks
+                })
+            }
+        })
+    },
     beforeRouteEnter(route, redirect, next) {
         $.get(route.path, (result) => {
             if (result.err) {
@@ -51,7 +62,7 @@ export default {
         },
         search() {
 
-            if (this.freeword_bef === this.freeword) {
+            if (this.freeword_bef === this.freeword && this.tasks != null) {
                 return
             }
 

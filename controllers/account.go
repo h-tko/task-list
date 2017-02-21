@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"github.com/echo-contrib/sessions"
 	"github.com/h-tko/task-list/models"
 	"github.com/labstack/echo"
 	"net/http"
@@ -16,6 +17,7 @@ func (this *AccountController) Index(c echo.Context) error {
 }
 
 func (this *AccountController) New(c echo.Context) error {
+	session := sessions.Default(c)
 
 	member := models.NewMember()
 	member.Name = c.FormValue("name")
@@ -36,6 +38,11 @@ func (this *AccountController) New(c echo.Context) error {
 	}
 
 	member.Regist()
+	member.One(member.MailAddress, member.Password)
+
+	this.SetResponse("MemberID", member.ID)
+	session.Set("MemberID", member.ID)
+	session.Save()
 
 	return this.JSON(c, http.StatusOK)
 }

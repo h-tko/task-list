@@ -46,7 +46,7 @@ export default {
 
                     this.show = false
 
-                    this.$router.push('/tasks')
+                    this.$router.push('/')
                 }
             });
         }

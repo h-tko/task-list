@@ -1,7 +1,7 @@
 <template>
     <div class="mt-20">
         <ol class="breadcrumb" v-if="show">
-            <li class="breadcrumb-item"><router-link to="/tasks">要望一覧</router-link></li>
+            <li class="breadcrumb-item"><router-link to="/">要望一覧</router-link></li>
             <li class="breadcrumb-item active">{{task.Title}}</li>
         </ol>
         <transition name="custom-classes-transition" enter-active-class="animated fadeIn" v-on:enter="enter" mode="out-in" tag="div" appear>

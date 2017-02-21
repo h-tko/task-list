@@ -1,7 +1,7 @@
 <template>
     <div class="mt-20">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><router-link to="/tasks">要望一覧</router-link></li>
+            <li class="breadcrumb-item"><router-link to="/">要望一覧</router-link></li>
             <li class="breadcrumb-item active">アカウント登録</li>
         </ol>
 
@@ -17,6 +17,7 @@
                                 <span class="input-group-addon">メールアドレス</span>
                                 <input type="text" v-model="mail_address">
                             </div>
+                            <span class="text-danger" v-if="alert_mail_address">メールアドレスが正しく入力されていません</span>
                         </div>
                     </div>
 
@@ -26,6 +27,7 @@
                                 <span class="input-group-addon">名前</span>
                                 <input type="text" v-model="name">
                             </div>
+                            <span class="text-danger" v-if="alert_name">名前が正しく入力されていません</span>
                         </div>
                     </div>
 
@@ -35,6 +37,7 @@
                                 <span class="input-group-addon">パスワード</span>
                                 <input type="password" v-model="password">
                             </div>
+                            <span class="text-danger" v-if="alert_password">パスワードが正しく入力されていません</span>
                         </div>
                     </div>
 
@@ -59,12 +62,24 @@ export default {
         return {
             show: false,
             mail_address: null,
+            alert_mail_address: false,
             name: null,
+            alert_name: false,
             password: null,
+            alert_password: false,
         }
     },
     methods: {
         newAccount() {
+            this.alert_mail_address = (this.mail_address == null || this.mail_address.length < 1 || this.mail_address.indexOf("@") < 0)
+
+            this.alert_name = (this.name == null || this.name.length < 1)
+
+            this.alert_password = (this.password == null || this.password.length < 1)
+
+            if (this.alert_mail_address || this.alert_name || this.alert_password) {
+                return
+            }
 
             $.post('/account/new', {
                 mail_address: this.mail_address,
@@ -74,13 +89,15 @@ export default {
                 if (result.err) {
                     console.log(err)
                 } else {
-                    this.$router.push('/tasks')
+                    window.MemberID = result.MemberID
+
+                    location.href = '/'
                 }
             })
 
             this.show = false
-            this.$router.push('/tasks')
+            this.$router.push('/')
         },
-    }
+    },
 }
 </script>

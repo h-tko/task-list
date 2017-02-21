@@ -20,12 +20,6 @@ const routes = [{
         login: LoginModal,
     }
 }, {
-    path: '/tasks',
-    components: {
-        default: TaskList,
-        login: LoginModal,
-    }
-}, {
     path: '/send',
     components: {
         default: SendTask,
@@ -46,7 +40,7 @@ const routes = [{
 }];
 
 const router = new VueRouter({
-    mode: 'history',
+//    mode: 'history',
     routes: routes
 });
 

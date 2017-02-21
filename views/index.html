@@ -5,12 +5,12 @@
     <body>
         <div id="main">
             <nav class="navbar navbar-light bg-faded sticky-top navbar-toggleable-md app-nav bg-faded">
-                <router-link class="navbar-brand" to="/tasks">要望管理</router-link>
+                <router-link class="navbar-brand" to="/">要望管理</router-link>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <ul class="nav navbar-nav mr-auto" appear>
                         <li class="nav-item active">
-                            <router-link class="nav-link" to="/tasks" exact>要望一覧<span class="sr-only">(current)</span></router-link>
+                            <router-link class="nav-link" to="/" exact>要望一覧<span class="sr-only">(current)</span></router-link>
                         </li>
                         <li class="nav-item login-enabled"{{if not .MemberID}} style="display: none"{{end}}>
                             <router-link class="nav-link" to="/send">要望登録</router-link>

@@ -42,7 +42,7 @@ export default {
         return {
             mail_address: null,
             password: null,
-            memberID: null,
+            memberID: window.MemberID,
         }
     },
     methods: {
