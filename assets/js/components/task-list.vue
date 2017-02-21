@@ -46,7 +46,7 @@ export default {
         })
     },
     beforeRouteEnter(route, redirect, next) {
-        $.get(route.path, (result) => {
+        $.get('/tasks', (result) => {
             if (result.err) {
                 console.log(result.err)
             } else {
@@ -80,7 +80,7 @@ export default {
     watch: {
         $route () {
             this.tasks = null
-            $.get(this.$route.path, (result) => {
+            $.get('/tasks', (result) => {
                 if (result.err) {
                     this.error = result.err.toString()
                 } else {
