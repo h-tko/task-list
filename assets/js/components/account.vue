@@ -56,10 +56,7 @@
 export default {
     name: 'Account',
     data() {
-        setTimeout(() => {
-            this.show = true
-        }, 100);
-        return {
+         return {
             show: false,
             mail_address: null,
             alert_mail_address: false,
@@ -68,6 +65,11 @@ export default {
             password: null,
             alert_password: false,
         }
+    },
+    beforeRouteEnter(route, redirect, next) {
+        next(vm => {
+            vm.show = true
+        })
     },
     methods: {
         newAccount() {
