@@ -37,11 +37,19 @@ func (this *AccountController) New(c echo.Context) error {
 		return this.JSON(c, http.StatusOK)
 	}
 
+	if member.Exists(member.MailAddress) {
+		this.SetResponse("err", map[string]string{"key": "MailAddress", "message": "そのメールアドレスのアカウントはすでに存在しています。"})
+
+		return this.JSON(c, http.StatusOK)
+	}
+
 	member.Regist()
 	member.One(member.MailAddress, member.Password)
 
 	this.SetResponse("MemberID", member.ID)
+	this.SetResponse("MemberName", member.Name)
 	session.Set("MemberID", member.ID)
+	session.Set("MemberName", member.Name)
 	session.Save()
 
 	return this.JSON(c, http.StatusOK)

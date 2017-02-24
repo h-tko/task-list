@@ -25,3 +25,8 @@
 .fade-leave-to {
     opacity: 0
 }
+
+div.card-black {
+    background-color: #333;
+    border-color: #333;
+}

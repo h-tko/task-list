@@ -12,7 +12,7 @@
                     <p class="card-text">登録するアカウント情報を入力してください。</p>
 
                     <div class="row mt-3">
-                        <div class="col">
+                        <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="input-group-addon">メールアドレス</span>
                                 <input type="text" v-model="mail_address">
@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="row mt-3">
-                        <div class="col">
+                        <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="input-group-addon">名前</span>
                                 <input type="text" v-model="name">
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="row mt-3">
-                        <div class="col">
+                        <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="input-group-addon">パスワード</span>
                                 <input type="password" v-model="password">
@@ -89,16 +89,23 @@ export default {
                 password: this.password
             }, (result) => {
                 if (result.err) {
-                    console.log(err)
+                    if (result.err.key === "MailAddress") {
+                        this.alert_mail_address = true
+                    } else {
+                        console.log(result.err)
+                    }
+
+                    return
                 } else {
                     window.MemberID = result.MemberID
+                    document.getElementById("member-name").innerText = result.MemberName
 
                     location.href = '/'
                 }
-            })
 
-            this.show = false
-            this.$router.push('/')
+                this.show = false
+                this.$router.push('/')
+            })
         },
     },
 }

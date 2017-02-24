@@ -18,9 +18,11 @@ type BaseController struct {
 func (this *BaseController) BeforeFilter(c echo.Context) {
 	session := sessions.Default(c)
 	memberID := session.Get("MemberID")
+	memberName := session.Get("MemberName")
 
 	if memberID != nil {
 		this.SetResponse("MemberID", memberID)
+		this.SetResponse("MemberName", memberName)
 	}
 }
 

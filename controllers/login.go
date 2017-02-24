@@ -24,8 +24,10 @@ func (this *LoginController) Login(c echo.Context) error {
 		this.SetResponse("err", "アカウントが見つかりません。")
 	} else {
 		this.SetResponse("MemberID", memberModel.ID)
+		this.SetResponse("MemberName", memberModel.Name)
 
 		session.Set("MemberID", memberModel.ID)
+		session.Set("MemberName", memberModel.Name)
 		session.Save()
 	}
 

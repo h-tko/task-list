@@ -30,6 +30,13 @@ func (model *Member) One(mailAddress, password string) {
 		First(&model)
 }
 
+func (model *Member) Exists(mailAddress string) bool {
+	var count int
+	db.Model(&Member{}).Where("mail_address = ?", mailAddress).Count(&count)
+
+	return count > 0
+}
+
 func (model *Member) FromID(id uint) {
 	db.Select("id, name, mail_address").
 		Where("id = ?", id).

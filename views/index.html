@@ -26,6 +26,11 @@
                             <router-link to="/account" class="nav-link">アカウント作成</router-link>
                         </li>
 
+                        <div class="login-enabled"{{if not .MemberID}} style="display: none;"{{end}}>
+                            <li class="nav-item d-flex align-items-center">
+                                <span class="text-info" id="member-name">{{.MemberName}}</span>&nbsp;&nbsp;
+                            </li>
+                        </div>
                         <li class="nav-item login-enabled"{{if not .MemberID}} style="display: none"{{end}}>
                             <button type="button" class="btn btn-outline-danger" id="logout">ログアウト</button>
                         </li>

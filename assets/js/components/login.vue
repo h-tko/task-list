@@ -47,17 +47,28 @@ export default {
     },
     methods: {
         login() {
+            window.MemberID = null
+            window.MemberName = null
+            this.memberID = null
             $.post("/login", {mail_address: this.mail_address, password: this.password}, (result) => {
                 if (result.err) {
                     alert(result.err)
                 } else {
                     this.memberID = result.MemberID
+                    document.getElementById("member-name").innerText = result.MemberName
+                    this.mail_address = null
+                    this.password = null
                 }
             })
         }
     },
     watch: {
         memberID: (newMemberID) => {
+
+            if (newMemberID === null) {
+                return
+            }
+
             window.MemberID = newMemberID
 
             const objects = document.querySelectorAll(".login-disabled")
