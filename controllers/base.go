@@ -20,6 +20,8 @@ func (this *BaseController) BeforeFilter(c echo.Context) {
 	memberID := session.Get("MemberID")
 	memberName := session.Get("MemberName")
 
+	this.clearResponse()
+
 	if memberID != nil {
 		this.SetResponse("MemberID", memberID)
 		this.SetResponse("MemberName", memberName)
@@ -61,4 +63,10 @@ func (this *BaseController) setMeta() {
 	this.response["mk"] = this.MetaKeywords
 	this.response["mh1"] = this.MetaH1
 	this.response["mr"] = this.MetaRobots
+}
+
+func (this *BaseController) clearResponse() {
+	for key := range this.response {
+		delete(this.response, key)
+	}
 }

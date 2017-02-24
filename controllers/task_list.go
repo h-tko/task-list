@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/h-tko/task-list/models"
 	"github.com/labstack/echo"
 	"net/http"
@@ -13,8 +12,6 @@ type TaskListController struct {
 
 func (this *TaskListController) Index(c echo.Context) error {
 	this.BeforeFilter(c)
-
-	fmt.Printf("%v", c.Request().Header)
 
 	taskModel := models.NewTask()
 	tasks := taskModel.All()
@@ -45,8 +42,6 @@ func (this *TaskListController) Search(c echo.Context) error {
 
 func (this *TaskListController) Tasks(c echo.Context) error {
 	this.BeforeFilter(c)
-
-	fmt.Printf("%v", c.Request().Header)
 
 	taskModel := models.NewTask()
 	tasks := taskModel.All()

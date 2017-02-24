@@ -38,6 +38,7 @@ func (this *LoginController) Logout(c echo.Context) error {
 	session := sessions.Default(c)
 
 	session.Delete("MemberID")
+	session.Delete("MemberName")
 	session.Save()
 
 	return this.JSON(c, http.StatusOK)
